@@ -1,10 +1,9 @@
 web:
-  build: .
-  ports:
-   - "5000:5000"
-  volumes:
-   - .:/code
+  image: binocarlos/moby-counter
   links:
-   - redis
+    - redis:redis
 redis:
   image: redis
+  volume_driver: flocker
+  volumes:
+     - 'demo:/data'
